@@ -10,13 +10,13 @@ import remove from './remove';
 /* AUTOCOMMIT */
 
 const defaultOptions = {
-  add: [],
-  remove: []
+  add: [] as string[],
+  remove: [] as string[]
 };
 
-function factory ( options? ) {
+function factory ( customOptions?: Partial<typeof defaultOptions> ) {
 
-  options = Object.assign ( {}, defaultOptions, options );
+  const options = Object.assign ( {}, defaultOptions, customOptions );
 
   return async function gitignore ( config, repoPath, ctx, task ) {
 
